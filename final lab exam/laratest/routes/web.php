@@ -1,10 +1,10 @@
 <?php
 
-use App\Http\Controllers\loginController;
-use App\Http\Controllers\homeController;
-
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\logoutController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,7 +19,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/login', [loginController::class,'index']);
-Route::post('/login', [loginController::class,'varify']);
 
-Route::get('/home', [homeController::class,'index']);
+Route::resource('/login','App\Http\Controllers\LoginController');
+Route::resource('/admin','App\Http\Controllers\AdminController');
+Route::post('/admin/employee/{id}',[AdminController::class,'updateEmployee'])->name('admin.updateEmployee');
+
+Route::resource('/employee','App\Http\Controllers\EmployeeController');
+Route::resource('/logout','App\Http\Controllers\logoutController');
