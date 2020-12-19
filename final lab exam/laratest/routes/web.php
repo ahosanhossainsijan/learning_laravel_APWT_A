@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\EmployeeController;
-use App\Http\Controllers\logoutController;
+use App\Http\Controllers\LogoutController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,4 +25,4 @@ Route::resource('/admin','App\Http\Controllers\AdminController');
 Route::post('/admin/employee/{id}',[AdminController::class,'updateEmployee'])->name('admin.updateEmployee');
 
 Route::resource('/employee','App\Http\Controllers\EmployeeController');
-Route::resource('/logout','App\Http\Controllers\logoutController');
+Route::resource('/logout','App\Http\Controllers\LogoutController');
