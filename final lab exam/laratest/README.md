@@ -1,5 +1,6 @@
 Because of version error some files are mixed up.
 The project is not working.
+I can not upload the resource folder. It's show empty but it contain the views file.
 
 
 
