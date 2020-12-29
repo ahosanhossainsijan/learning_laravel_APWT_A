@@ -14,7 +14,8 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        //
+        $products = Employee::all();
+        return view('Employee.index')->with('products',$products);
     }
 
     /**
@@ -24,7 +25,7 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        //
+        return view('Employee.addProducts');
     }
 
     /**
@@ -35,7 +36,16 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $product = new Employee();
+        $product->name = $request->name;
+        $product->quantity = $request->quantity;
+        $product->price = $request->price;
+        if($product->save()){
+            return redirect()->route('employee.index');
+        }
+        else{
+            return back();
+        }
     }
 
     /**
@@ -81,5 +91,12 @@ class EmployeeController extends Controller
     public function destroy(Employee $employee)
     {
         //
+    }
+
+    public function deleteProduct(int $id)
+    {
+        $product = Employee::find($id);
+        $product->delete();
+        return redirect()->route('employee.index');
     }
 }

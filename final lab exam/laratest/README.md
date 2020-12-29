@@ -1,21 +1,3 @@
-Because of version error some files are mixed up.
-The project is not working.
-I can not upload the resource folder. It's show empty but it contain the views file.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
@@ -60,7 +42,6 @@ We would like to extend our thanks to the following sponsors for funding Laravel
 - **[Many](https://www.many.co.uk)**
 - **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
 - **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/)**
 - **[OP.GG](https://op.gg)**
 
 ## Contributing

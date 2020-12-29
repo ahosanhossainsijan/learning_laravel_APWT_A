@@ -14,11 +14,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $employees = [
-            ['id'=>1,'username'=>'xyz','name'=>'XYZ','phone'=>'012'],
-            ['id'=>1,'username'=>'abc','name'=>'ABC','phone'=>'345'],
-            ['id'=>1,'username'=>'pqr','name'=>'PQR','phone'=>'678']
-        ];
+        $employees = Admin::all();
         return view("Admin.index")->with("employees",$employees);
     }
 
@@ -40,7 +36,18 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        return redirect()->route('admin.index');
+        $employee = new Admin();
+        $employee->username = $request->username;
+        $employee->password = $request->password;
+        $employee->phone = $request->phone;
+        $employee->name = $request->name;
+        if($employee->save()){
+            return redirect()->route('admin.index');
+        }
+        else{
+            return back();
+        }
+        
     }
 
     /**
@@ -49,9 +56,10 @@ class AdminController extends Controller
      * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function show(Admin $admin)
+    public function show(int $id)
     {
-        return view('admin.editEmployee');
+        $employee = Admin::where('id',$id)->first();
+        return view('admin.editEmployee',$employee);
     }
 
     /**
@@ -72,19 +80,40 @@ class AdminController extends Controller
      * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Admin $admin)
+    public function update(Request $request)
     {
         //
     }
 
+    public function updateEmployee(Request $request,int $id)
+    {
+        $employee = Admin::find($id);
+        $employee->username = $request->username;
+        $employee->password = $request->password;
+        $employee->phone = $request->phone;
+        $employee->name = $request->name;
+        if($employee->save()){
+            return redirect()->route('admin.index');
+        }
+        else{
+            return back();
+        }
+    }
     /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Admin $admin)
+    public function destroy(int $id)
     {
-        //
+        
+    }
+
+    public function deleteEmployee(int $id)
+    {
+        $employee = Admin::find($id);
+        $employee->delete();
+        return redirect()->route('admin.index');
     }
 }
